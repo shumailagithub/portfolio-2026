@@ -1,78 +1,110 @@
-import { Card } from '@/components/ui/card';
-import { Star } from 'lucide-react';
+'use client';
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export function Testimonials() {
-  const testimonials = [
-    {
-      name: 'Ahmed Malik',
-      role: 'CEO, E-commerce Startup',
-      content:
-        "Shumaila transformed our furniture store into a modern masterpiece. The Next.js integration is incredibly fast, and her design sense is top-notch. Highly recommended for any e-commerce project!",
-      rating: 5,
-    },
-    {
-      name: 'Sarah Connor',
-      role: 'Product Lead, AI Solutions',
-      content:
-        "Her work on our Agentic AI system was revolutionary. She didn't just build a chatbot; she created a fully autonomous agent that handles 70% of our customer inquiries independently. A true expert in LangChain and AI Agents.",
-      rating: 5,
-    },
-    {
-      name: 'Julian Brooks',
-      role: 'Operations Manager, Global Trade',
-      content:
-        "We hired her for a custom AI automation project. Her ability to integrate AI into our workflow saved us hundreds of hours. She is proactive, professional, and delivers beyond expectations.",
-      rating: 5,
-    },
+  const clientImages = [
+    '/pic1.png',
+    '/pic2.png',
+    '/pic7.png',
+    '/pic5.png',
+    '/pic6.png',
+    '/pic8.png',
+    '/pic1.png', // Duplicate for seamless loop
+    '/pic2.png',
+    '/pic7.png',
+    '/pic5.png',
+    '/pic6.png',
   ];
 
   return (
     <section
       id="testimonials"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            What Clients Say
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16 space-y-4"
+        >
+          <h2 className="text-4xl sm:text-5xl font-black text-foreground tracking-tight">
+            What <span className="gradient-text">Clients</span> Say
           </h2>
-          <p className="text-lg text-foreground/60 max-w-2xl mx-auto italic">
-            Feedback from those I&apos;ve helped with Web & AI solutions
+          <div className="h-1.5 w-20 bg-primary mx-auto rounded-full" />
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto italic font-medium">
+            Trusted by clients worldwide for premium Web & AI solutions
           </p>
+        </motion.div>
+
+        <div className="relative flex overflow-x-hidden">
+          <motion.div
+            className="flex gap-8 py-12 whitespace-nowrap"
+            animate={{
+              x: [0, -1920],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 30,
+                ease: "linear",
+              },
+            }}
+          >
+            {clientImages.map((src, index) => (
+              <div
+                key={index}
+                className="w-48 h-48 sm:w-64 sm:h-64 relative flex-shrink-0 rounded-[2.5rem] overflow-hidden glass-card border-white/10 group hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-shadow duration-500"
+              >
+                <Image
+                  src={src}
+                  alt={`Client ${index}`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            ))}
+          </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="p-8 rounded-3xl glass-card border-white/20 hover:shadow-xl transition-all duration-300 flex flex-col group"
-            >
-              {/* Stars */}
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-5 w-5 fill-primary text-primary transition-transform group-hover:scale-110"
-                  />
-                ))}
+        {/* Second row moving in opposite direction */}
+        <div className="relative flex overflow-x-hidden mt-8">
+          <motion.div
+            className="flex gap-8 py-12 whitespace-nowrap"
+            animate={{
+              x: [-1920, 0],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 40,
+                ease: "linear",
+              },
+            }}
+          >
+            {[...clientImages].reverse().map((src, index) => (
+              <div
+                key={index}
+                className="w-48 h-48 sm:w-64 sm:h-64 relative flex-shrink-0 rounded-[2.5rem] overflow-hidden glass-card border-white/10 group hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-shadow duration-500"
+              >
+                <Image
+                  src={src}
+                  alt={`Client Reverse ${index}`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-
-              {/* Quote */}
-              <p className="text-foreground/70 text-lg leading-relaxed mb-8 flex-1 italic">
-                {`"${testimonial.content}"`}
-              </p>
-
-              {/* Author */}
-              <div className="border-t border-primary/10 pt-6">
-                <h4 className="font-bold text-xl text-foreground">
-                  {testimonial.name}
-                </h4>
-                <p className="text-sm font-semibold text-primary uppercase tracking-widest">{testimonial.role}</p>
-              </div>
-            </Card>
-          ))}
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
+

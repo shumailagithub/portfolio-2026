@@ -21,62 +21,64 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 glass-card bg-background/80 backdrop-blur-lg border-b border-white/20 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="#" className="flex items-center gap-2">
-            <Image
-              src="/logo-of-my-name.png"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="rounded-lg object-contain"
-            />
-            <span className="font-bold text-xl tracking-tight text-foreground/90">Portfolio</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-semibold text-foreground/60 hover:text-primary transition-all duration-300 relative group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
-          </div>
-
-          {/* Right side buttons */}
-          <div className="flex items-center gap-2">
-            <Link href="#contact" className="hidden sm:block">
-              <Button size="sm" className="rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white border border-primary/20 font-semibold px-6">
-                Hire Me
-              </Button>
+    <nav className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto glass-card bg-background/80 backdrop-blur-lg border border-white/20 rounded-2xl shadow-lg">
+        <div className="px-4 sm:px-6">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <Link href="#" className="flex items-center">
+              <Image
+                src="/logo-of-my-name.png"
+                alt="Logo"
+                width={140}
+                height={40}
+                priority
+                className="object-contain"
+              />
             </Link>
 
-            {/* Mobile menu button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleMenu}
-              className="md:hidden rounded-full hover:bg-primary/10"
-            >
-              {isOpen ? (
-                <X className="h-5 w-5 text-primary" />
-              ) : (
-                <Menu className="h-5 w-5 text-primary" />
-              )}
-            </Button>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-semibold text-foreground/60 hover:text-primary transition-all duration-300 relative group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              ))}
+            </div>
+
+            {/* Right side buttons */}
+            <div className="flex items-center gap-2">
+              <Link href="#contact" className="hidden sm:block">
+                <Button size="sm" className="rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white border border-primary/20 font-semibold px-6">
+                  Hire Me
+                </Button>
+              </Link>
+
+              {/* Mobile menu button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleMenu}
+                className="md:hidden rounded-full hover:bg-primary/10"
+              >
+                {isOpen ? (
+                  <X className="h-5 w-5 text-primary" />
+                ) : (
+                  <Menu className="h-5 w-5 text-primary" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2 animate-in fade-in slide-in-from-top-4">
+          <div className="md:hidden px-4 pb-4 space-y-2 animate-in fade-in slide-in-from-top-4 border-t border-white/10 pt-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
