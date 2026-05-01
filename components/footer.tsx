@@ -85,7 +85,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-foreground/60">
-          <p>&copy; {currentYear} All rights reserved. Crafted with care.</p>
+          <p>&copy; {currentYear} Shumaila Gulfam. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-foreground transition-colors">
               Privacy Policy
