@@ -4,54 +4,41 @@ import {
   Bot,
   Zap,
   Globe,
-  Cpu,
+  Layout,
   Palette,
-  TableProperties,
 } from 'lucide-react';
 
 export function Services() {
   const services = [
     {
-      icon: Bot,
-      title: 'Agentic AI Solutions',
-      description:
-        'Building autonomous AI agents using LangChain and CrewAI that can reason, use tools, and complete complex business tasks independently.',
-    },
-    {
       icon: Code2,
-      title: 'Next.js Full-Stack Dev',
-      description:
-        'Developing high-performance, SEO-friendly web applications using Next.js 15, TypeScript, and modern backend architectures.',
+      title: 'Website Development',
+      description: 'Modern, fast, and responsive websites built with latest technologies.',
     },
     {
-      icon: Palette,
-      title: 'Graphic Design (Canva)',
-      description:
-        'Professional visual content creation using Canva, including social media posts, branding materials, and aesthetic UI elements.',
-    },
-    {
-      icon: TableProperties,
-      title: 'Smart Data Management',
-      description:
-        'Organizing and automating workflows using Google Sheets, including data analysis, tracking, and AI-to-Sheet integrations.',
-    },
-    {
-      icon: Cpu,
-      title: "24/7 AI Employees (FTEs)",
-      description:
-        'Designing digital workers that operate around the clock, handling data entry, customer support, or task execution without human help.',
+      icon: Bot,
+      title: 'AI Automation',
+      description: 'Smart AI solutions to automate tasks and improve business workflows.',
     },
     {
       icon: Zap,
-      title: 'Workflow Automation',
-      description:
-        'Optimizing business processes by replacing repetitive manual work with intelligent AI-driven automation pipelines.',
+      title: 'Landing Pages',
+      description: 'High-converting landing pages designed to generate leads and sales.',
     },
     {
-      icon: Bot,
-      title: 'Agentic AI Solutions',
-      description:
-        'Building autonomous AI agents using LangChain and CrewAI that can reason, use tools, and complete complex business tasks independently.',
+      icon: Globe,
+      title: 'Portfolio & Business Websites',
+      description: 'Professional websites to showcase your brand and services.',
+    },
+    {
+      icon: Layout,
+      title: 'WordPress Solutions',
+      description: 'Custom WordPress development, theme customization, and plugin integration.',
+    },
+    {
+      icon: Palette,
+      title: 'Graphic Designing',
+      description: 'Professional visual branding, social media assets, and UI/UX design concepts.',
     },
   ];
 

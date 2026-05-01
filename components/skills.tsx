@@ -5,50 +5,31 @@ import { motion } from 'framer-motion';
 import {
   Code2,
   Database,
-  Palette,
   Zap,
-  Brain,
-  Bot,
-  TableProperties,
-  Layout,
+  Palette,
 } from 'lucide-react';
 
 export function Skills() {
   const skillCategories = [
     {
       icon: Code2,
-      title: 'Frontend Development',
-      skills: ['React', 'Next.js 15', 'WordPress', 'TypeScript', 'Tailwind CSS'],
-    },
-    {
-      icon: Brain,
-      title: 'Agentic AI Dev',
-      skills: ['LangChain', 'AI Agents', 'OpenAI API', 'Automation'],
-    },
-    {
-      icon: Palette,
-      title: 'Graphic Design',
-      skills: [
-        'Canva Expert',
-        'WordPress Design',
-        'Branding',
-        'Social Media Design',
-      ],
-    },
-    {
-      icon: TableProperties,
-      title: 'Data Management',
-      skills: ['Google Sheets', 'Data Automation', 'Excel', 'Analysis'],
+      title: 'Frontend',
+      skills: ['Next.js', 'React', 'Tailwind CSS', 'WordPress'],
     },
     {
       icon: Database,
-      title: 'Backend & APIs',
-      skills: ['Node.js', 'PostgreSQL', 'MongoDB', 'REST APIs'],
+      title: 'Backend',
+      skills: ['FastAPI', 'REST APIs'],
     },
     {
       icon: Zap,
-      title: 'Performance',
-      skills: ['SEO', 'Optimization', 'Testing', 'Vercel'],
+      title: 'AI & Automation',
+      skills: ['AI Agents', 'Workflow Automation'],
+    },
+    {
+      icon: Palette,
+      title: 'Graphic Designing',
+      skills: ['Canva', 'Branding', 'UI/UX Design'],
     },
   ];
 
@@ -68,7 +49,7 @@ export function Skills() {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
       },
     },
@@ -141,4 +122,3 @@ export function Skills() {
     </section>
   );
 }
-

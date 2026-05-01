@@ -46,21 +46,36 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="space-y-4"
         >
-          <motion.p 
+          <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring" }}
-            className="text-sm md:text-base font-semibold text-primary uppercase tracking-[0.2em] bg-primary/10 w-fit mx-auto px-6 py-2 rounded-full border border-primary/20 backdrop-blur-sm"
+            className="flex flex-col items-center gap-4"
           >
-            Welcome to my portfolio
-          </motion.p>
+            <Link href="#contact" className="group/badge">
+              <div className="flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">
+                  Available for Freelance
+                </span>
+              </div>
+            </Link>
+            <motion.p 
+              className="text-sm md:text-base font-semibold text-primary uppercase tracking-[0.2em] bg-primary/10 w-fit mx-auto px-6 py-2 rounded-full border border-primary/20 backdrop-blur-sm"
+            >
+              Welcome to my portfolio
+            </motion.p>
+          </motion.div>
           <motion.h1 
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-black text-foreground text-balance leading-tight"
+            className="text-3xl sm:text-4xl lg:text-6xl font-black text-foreground text-balance leading-tight"
           >
-            Crafting Premium <span className="gradient-text">Digital Solutions</span>
+            I build high-converting websites and <span className="gradient-text">AI-powered systems</span> that help businesses grow.
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -68,7 +83,7 @@ export function Hero() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto text-pretty font-medium"
           >
-            I&apos;m a Full-stack Developer, WordPress Specialist, and Graphic Designer dedicated to building high-quality, functional web experiences that drive results.
+            I specialize in modern web development and intelligent automation to improve performance, user experience, and business efficiency.
           </motion.p>
         </motion.div>
 
@@ -90,7 +105,7 @@ export function Hero() {
               size="lg"
               className="w-full sm:w-auto rounded-full px-10 py-7 border-2 border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 font-bold backdrop-blur-sm bg-white/50 text-lg"
             >
-              Get in Touch
+              Hire Me
             </Button>
           </Link>
         </motion.div>

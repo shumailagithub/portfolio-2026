@@ -3,14 +3,15 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from 'sonner'
+import { FloatingWhatsApp } from '@/components/floating-whatsapp'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Shumaila Gulfam | Portfolio',
-  description: 'Full-stack Developer, WordPress Specialist, and Graphic Designer dedicated to building high-quality web experiences.',
+  title: 'Shumaila Gulfam | Full Stack & AI Developer Portfolio',
+  description: 'I build modern websites and AI-powered solutions to help businesses grow. Specializing in Next.js, WordPress, FastAPI, and intelligent automation.',
   icons: {
     icon: [
       {
@@ -47,6 +48,7 @@ export default function RootLayout({
           {children}
           <Toaster position="top-center" richColors />
           {process.env.NODE_ENV === 'production' && <Analytics />}
+          <FloatingWhatsApp />
         </ThemeProvider>
       </body>
     </html>

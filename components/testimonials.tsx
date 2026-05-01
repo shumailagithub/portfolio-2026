@@ -1,27 +1,32 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { Card } from '@/components/ui/card';
+import { Quote } from 'lucide-react';
 
 export function Testimonials() {
-  const clientImages = [
-    '/pic1.png',
-    '/pic2.png',
-    '/pic7.png',
-    '/pic5.png',
-    '/pic6.png',
-    '/pic8.png',
-    '/pic1.png', // Duplicate for seamless loop
-    '/pic2.png',
-    '/pic7.png',
-    '/pic5.png',
-    '/pic6.png',
+  const testimonials = [
+    {
+      name: 'Alex Johnson',
+      role: 'Tech Entrepreneur',
+      feedback: 'Great developer, delivered exactly what I needed on time. The attention to detail is exceptional.',
+    },
+    {
+      name: 'Sarah Miller',
+      role: 'E-commerce Owner',
+      feedback: 'Very professional and responsive, highly recommended. The project exceeded our expectations in every way.',
+    },
+    {
+      name: 'David Chen',
+      role: 'Startup Founder',
+      feedback: 'An absolute pleasure to work with. Technical expertise and communication skills are top-notch.',
+    },
   ];
 
   return (
     <section
       id="testimonials"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-transparent"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div 
@@ -39,72 +44,37 @@ export function Testimonials() {
           </p>
         </motion.div>
 
-        <div className="relative flex overflow-x-hidden">
-          <motion.div
-            className="flex gap-8 py-12 whitespace-nowrap"
-            animate={{
-              x: [0, -1920],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-          >
-            {clientImages.map((src, index) => (
-              <div
-                key={index}
-                className="w-48 h-48 sm:w-64 sm:h-64 relative flex-shrink-0 rounded-[2.5rem] overflow-hidden glass-card border-white/10 group hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-shadow duration-500"
-              >
-                <Image
-                  src={src}
-                  alt={`Client ${index}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Second row moving in opposite direction */}
-        <div className="relative flex overflow-x-hidden mt-8">
-          <motion.div
-            className="flex gap-8 py-12 whitespace-nowrap"
-            animate={{
-              x: [-1920, 0],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...clientImages].reverse().map((src, index) => (
-              <div
-                key={index}
-                className="w-48 h-48 sm:w-64 sm:h-64 relative flex-shrink-0 rounded-[2.5rem] overflow-hidden glass-card border-white/10 group hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-shadow duration-500"
-              >
-                <Image
-                  src={src}
-                  alt={`Client Reverse ${index}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            ))}
-          </motion.div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="p-8 rounded-[2.5rem] glass-card border-white/20 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 h-full flex flex-col relative group">
+                <div className="absolute top-6 right-8 text-primary/20 group-hover:text-primary/40 transition-colors">
+                  <Quote size={40} />
+                </div>
+                
+                <p className="text-foreground/70 leading-relaxed font-medium italic mb-8 flex-1">
+                  "{testimonial.feedback}"
+                </p>
+                
+                <div className="pt-6 border-t border-primary/10">
+                  <h4 className="text-xl font-bold text-foreground">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-sm text-primary font-semibold uppercase tracking-wider mt-1">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-

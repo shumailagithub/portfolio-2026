@@ -6,6 +6,7 @@ import { Projects } from '@/components/projects';
 import { Services } from '@/components/services';
 import { WhyChooseMe } from '@/components/why-choose-me';
 import { Testimonials } from '@/components/testimonials';
+import { CTA } from '@/components/cta';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
 
@@ -20,6 +21,7 @@ export default function Home() {
       <Services />
       <WhyChooseMe />
       <Testimonials />
+      <CTA />
       <Contact />
       <Footer />
     </div>
